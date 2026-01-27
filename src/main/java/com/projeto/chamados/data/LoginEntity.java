@@ -1,28 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+/* * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template */
 package com.projeto.chamados.data;
+import com.projeto.chamados.enums.UserRole;
 import lombok.Data;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-/**
- *
- * @author heitor
- */
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name="Login")
+@Table(name = "usuario") // nome mais claro para tabela
 public class LoginEntity {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer loginid;
-    private String  email;
-    private String  senha;
-    private String  status;
+
+    @Email(message = "E-mail inválido")
+    @NotBlank(message = "E-mail obrigatório")
+    @Size(max = 255, message = "E-mail até 255 caracteres")
+    @Column(unique = true, nullable = false)
+    private String email;
+
+    @NotBlank(message = "Senha obrigatória")
+    @Size(max = 255, message = "Senha até 255 caracteres")
+    private String senhahash;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private UserRole role;
+
+    @Size(max = 255, message = "Token até 255 caracteres")
+    private String resetTokenHash;
+
+    private LocalDateTime resetTokenExpira;
 }
