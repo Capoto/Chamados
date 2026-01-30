@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository 
 public interface UsuarioRepository extends  JpaRepository<UsuarioEntity,Integer>{
     
+    boolean existsByEmail(String email);
     UsuarioEntity findByEmail(String email);
     UsuarioEntity findByResetTokenHash(String hash);
     

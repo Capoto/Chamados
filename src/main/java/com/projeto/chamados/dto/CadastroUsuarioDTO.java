@@ -23,7 +23,7 @@ public record CadastroUsuarioDTO(
 
     @NotBlank(message = "Senha obrigatória")
     @Size(max = 255, message = "Senha até 255 caracteres")
-    String senhahash,
+    String senha,
 
     
    
