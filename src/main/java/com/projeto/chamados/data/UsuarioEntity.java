@@ -14,7 +14,7 @@ public class UsuarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer loginid;
+    private Long loginid;
 
     @Email
     @NotBlank
