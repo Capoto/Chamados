@@ -1,0 +1,169 @@
+.form {
+
+    width: 840px;
+    height: 920px;
+    background-color: rgba(255, 255, 255, 0.7);
+
+}
+
+.registro{
+    
+    width: 600px;
+    height: 720px;
+    background-color: rgba(255, 255, 255, 0.7);
+    
+}
+
+.login{
+    
+    width: 600px;
+    height: 350px;
+    background-color: rgba(255, 255, 255, 0.7);
+    
+}
+
+.colornav {
+
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.pequeno {
+
+
+    width: 200px;
+
+}
+.buttonregistro{
+    
+    width: 150px;
+}
+.laranja {
+
+    color: #fd7e14;
+}
+
+.completo {
+
+    width: 700px;
+    margin-left: 60px;
+}
+
+.completoregistro{
+    
+    width: 460px;
+    margin-left: 60px;
+    
+}
+
+.form-control2 {
+
+    width: 300px;
+    margin-left: 60px;
+}
+
+label {
+
+    font-weight: bold;
+    margin-left: 60px;
+}
+
+.divido {
+
+    width: 310px;
+    margin-left: 60px;
+}
+
+select {
+
+    margin-left: 60px;
+    width: 300px;
+}
+
+body {
+    background: #E8F1F8;
+}
+
+.alert {
+
+    width: 700px;
+    margin-left: 60px;
+}
+
+.tamanho {
+
+    height: 70px;
+}
+
+
+
+.bs-select-wrapper {
+    margin-left: 60px;
+    position: relative;
+    width: 100%;
+}
+
+.bs-select-display {
+    background: #fff;
+    border: 1px solid #ced4da;
+    padding: 0.47rem 0.75rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.bs-select-display:focus,
+.bs-select-wrapper.show .bs-select-display {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, .25);
+}
+
+.bs-caret {
+    border: 6px solid transparent;
+    border-top-color: #6c757d;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+
+.bs-select-wrapper.show .bs-caret {
+    transform: rotate(180deg);
+}
+
+.bs-select-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    margin-top: 5px;
+    display: none;
+    z-index: 9999;
+}
+
+.bs-select-wrapper.show .bs-select-menu {
+    display: block;
+}
+
+.bs-option {
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.bs-option:hover {
+    background: #f8f9fa;
+}
+
+.opt-title {
+    font-weight: 600;
+    display: block;
+}
+
+.opt-subtitle {
+    color: #6c757d;
+    font-size: 0.85rem;
+    line-height: 1.1rem;
+}

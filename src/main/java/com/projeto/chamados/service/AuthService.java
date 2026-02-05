@@ -37,6 +37,7 @@ public class AuthService {
         }
     
         UsuarioEntity usuarioEntity = new UsuarioEntity();
+         usuarioEntity.setNome(dto.nome());
         usuarioEntity.setEmail(dto.email());
         usuarioEntity.setRole(dto.role());
         usuarioEntity.setSenhahash(passwordEncoder.encode(dto.senha()));

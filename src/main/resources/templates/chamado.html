@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Start Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary colornav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ListaChamado.jsp">Chamados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Novo Chamado</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="form container mt-5">
+        <form action="ChamadoServlet" method="post" class="row g-3">
+
+            <center><Strong>
+                    <h1>Criar Chamado<h1><Strong></center>
+            <div class="col-12 mt-3"></div>
+            <div class="col-12 mt-3"></div>
+            <div class="alert alert-primary tamanho" role="alert">
+                <p>Você receberá uma cópia deste chamado por email, incluindo o número do chamado e todas as
+                    atualizações de status.</p>
+            </div>
+
+            <div class="row align-items-end">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Nome Completo / Empresa *</label>
+                        <input  class="form-control divido" id="exampleFormControlInput1"
+                            placeholder="Nome do cliente ou empresa" name="nome" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Email para Contato *</label>
+                        <input type="email" class="form-control divido" id="exampleFormControlInput1"
+                            placeholder="name@example.com" name="email" required>
+
+                    </div>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label texto">Categoria *</label>
+                <select class="form-select completo" name="categoria" aria-label="Default select example" required>
+                    <option selected>Selecione a Categoria do Problema</option>
+                    <option value="Hardware">Hardware</option>
+                    <option value="Software">Software</option>
+                    <option value="Rede">Rede</option>
+                    <option value="Licitação">Licitação</option>
+                    <option value="Financeiros">Financeiros</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label texto">Título do Chamado *</label>
+                <input name="titulo" class="form-control completo" id="exampleFormControlInput1"
+                    placeholder="Ex: problema no servidor de Backup" required>
+            </div>
+
+
+
+
+
+            <div class="row align-items-end">
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Prioridade / Criticidade *</label>
+
+                        <div class="bs-select-wrapper"   id="select2" required>
+    <div  class="bs-select-display">
+        <span class="selectText">Selecione uma opção</span>
+        <span class="bs-caret"></span>
+    </div>
+
+    <div  class="bs-select-menu" required>
+        <div class="bs-option" data-value="Baixa">
+            <span class="opt-title text-success">Baixa</span>
+            <span class="opt-subtitle">Prazo: 8h resposta / 40h solução (horário comercial)</span>
+        </div>
+
+        <div class="bs-option" data-value="Média">
+            <span class="opt-title text-warning">Média</span>
+            <span class="opt-subtitle">Prazo: 4h resposta / 16h solução (horário comercial)</span>
+        </div>
+
+        <div class="bs-option" data-value="Alta">
+            <span class="opt-title laranja">Alta</span>
+            <span class="opt-subtitle">Prazo: 1h resposta / 8h solução (horário comercial)</span>
+        </div>
+
+        <div class="bs-option" data-value="Crítica 24x7">
+            <span class="opt-title text-danger">Crítica 24x7</span>
+            <span class="opt-subtitle">Prazo: 15min resposta / 4h solução (24x7)</span>
+        </div>
+    </div>
+
+    <input type="hidden" class="selectValue" name="prioridade">
+</div>
+
+
+
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Tipo de Ativo de TI *</label>
+                        <div class="bs-select-wrapper" name="ativo" id="select1" required>
+                            <div class="bs-select-display">
+                                <span class="selectText">Selecione uma opção</span>
+                                <span class="bs-caret"></span>
+                            </div>
+
+                            <div class="bs-select-menu">
+                                <div class="bs-option" data-value="Servidor">
+                                    <span class="opt-title">Servidor</span>
+                                    <span class="opt-subtitle">SLA reduzido em 25% a 50%</span>
+                                </div>
+                                <div class="bs-option" data-value="Storage">
+                                    <span class="opt-title">Storage</span>
+                                    <span class="opt-subtitle">SLA reduzido em 25% a 50%</span>
+                                </div>
+                                <div class="bs-option" data-value="Switch">
+                                    <span class="opt-title">Switch</span>
+                                    <span class="opt-subtitle">SLA reduzido em 10% a 30%</span>
+                                </div>
+                                <div class="bs-option" data-value="Períferico">
+                                    <span class="opt-title">Períferico</span>
+                                    <span class="opt-subtitle">SLA padrão</span>
+                                </div>
+                                <div class="bs-option" data-value="Outros">
+                                    <span class="opt-title">Outros</span>
+                                    <span class="opt-subtitle">SLA padrão</span>
+                                </div>
+                            </div>
+
+                            <input type="hidden" class="selectValue">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+
+            <!--div class="mb-3">
+                <label class="form-label texto">Ativo de TI Relacionado (opcional)*</label>
+                <select class="form-select completo" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div-->
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Descrição Detalhada *</label>
+                <textarea class="form-control completo" name="descricao" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Anexos (opcional)</label>
+                <input class="form-control completo" type="file" id="formFile">
+            </div>
+            <br>
+            <div class="text-left">
+                <button type="submit" class="btn btn-dark buttonregistro" style="margin-left: 1.5cm;">Criar chamado</button>
+            </div>
+        </form>
+    </div>
+    <br><br>
+
+
+    <script>
+
+        function initCustomSelect(selector) {
+            const wrapper = document.querySelector(selector);
+            if (!wrapper) return;
+
+            const display = wrapper.querySelector(".bs-select-display");
+            const text = wrapper.querySelector(".selectText");
+            const valueInput = wrapper.querySelector(".selectValue");
+            const options = wrapper.querySelectorAll(".bs-option");
+
+            // abrir/fechar dropdown
+            display.addEventListener("click", () => {
+                wrapper.classList.toggle("show");
+            });
+
+            // selecionar opção
+            options.forEach(opt => {
+                opt.addEventListener("click", () => {
+                    const title = opt.querySelector(".opt-title").innerText;
+                    text.innerText = title;
+                    valueInput.value = opt.dataset.value;
+                    wrapper.classList.remove("show");
+                });
+            });
+
+            // fechar ao clicar fora
+            document.addEventListener("click", function (e) {
+                if (!wrapper.contains(e.target)) {
+                    wrapper.classList.remove("show");
+                }
+            });
+        }
+
+        initCustomSelect("#select1");
+        initCustomSelect("#select2");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary colornav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ListaChamado.jsp">Chamados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Novo Chamado</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br><br>
+    <div class="login container mt-5">
+        <form action="ChamadoServlet" method="post" class="row g-3">
+
+            <center><Strong>
+                    <h1>Login<h1><Strong></center>
+           
+           
+                    <div class="mb-3">
+                <label class="form-label texto">E-mail</label>
+                <input name="titulo" class="form-control completoregistro" id="exampleFormControlInput1"
+                    placeholder="Ex: example@gmail.com" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label texto">Senha</label>
+                <input name="titulo" class="form-control completoregistro" id="exampleFormControlInput1"
+                    placeholder="" required>
+            </div>
+           
+            <br>
+            <div class="text-left">
+                <button type="submit" class="btn btn-dark buttonregistro" style="margin-left: 1.5cm;">Entrar</button>
+            </div>
+        </form>
+    </div>
+    <br><br>
+
+</body>
+
+</html>

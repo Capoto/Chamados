@@ -16,7 +16,16 @@ import java.time.LocalDateTime;
  * @author heitor
  */
 public record CadastroUsuarioDTO(
-     
+    
+    @Size(max = 255, message = "Nome até 255 caracteres")    
+    String nome,
+        
+    @Size(max = 255, message = "Nome até 255 caracteres")    
+    String empresa,
+
+    @Size(max = 255, message = "Nome até 255 caracteres")    
+    String local,
+        
     @Email
     @Size(max = 255, message = "E-mail até 255 caracteres")
     String email,

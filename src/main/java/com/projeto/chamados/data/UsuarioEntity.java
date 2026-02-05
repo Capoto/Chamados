@@ -16,6 +16,11 @@ public class UsuarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer loginid;
 
+  
+    private String nome;
+    private String empresa;
+    private String local;
+    
     @Email
     @NotBlank
     @Column(unique = true, nullable = false)
