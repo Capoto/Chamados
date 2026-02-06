@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  *
@@ -28,6 +29,7 @@ public class AuthRestController {
     
     private AuthService authService;
 
+    @CrossOrigin("*")
     @PostMapping("/registrar")
     public ResponseEntity<UsuarioEntity> criarusuario(@RequestBody CadastroUsuarioDTO dto){
     

@@ -19,7 +19,7 @@ public class UsuarioEntity {
   
     private String nome;
     private String empresa;
-    private String local;
+    private String endereco;
     
     @Email
     @NotBlank

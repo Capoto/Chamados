@@ -24,7 +24,7 @@ public record CadastroUsuarioDTO(
     String empresa,
 
     @Size(max = 255, message = "Nome até 255 caracteres")    
-    String local,
+    String endereco,
         
     @Email
     @Size(max = 255, message = "E-mail até 255 caracteres")

@@ -7,6 +7,7 @@ import com.projeto.chamados.data.UsuarioEntity;
 import com.projeto.chamados.dto.LoginDTO;
 import com.projeto.chamados.dto.CadastroUsuarioDTO;
 import com.projeto.chamados.repository.UsuarioRepository;
+import com.projeto.chamados.exception.EmailJaExisteException;
 import com.projeto.chamados.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,11 +34,13 @@ public class AuthService {
     
         if(usuarioRepository.existsByEmail(dto.email())){
         
-           throw new RuntimeException("Email encontrado");
+           throw new EmailJaExisteException("Email já registrado!");
         }
     
         UsuarioEntity usuarioEntity = new UsuarioEntity();
-         usuarioEntity.setNome(dto.nome());
+        usuarioEntity.setNome(dto.nome());
+        usuarioEntity.setEmpresa(dto.empresa());
+        usuarioEntity.setEndereco(dto.endereco());
         usuarioEntity.setEmail(dto.email());
         usuarioEntity.setRole(dto.role());
         usuarioEntity.setSenhahash(passwordEncoder.encode(dto.senha()));
