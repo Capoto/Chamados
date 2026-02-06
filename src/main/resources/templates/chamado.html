@@ -239,6 +239,15 @@
         initCustomSelect("#select1");
         initCustomSelect("#select2");
     </script>
+    <script>
+// se não tiver token → vai pro login
+if (!localStorage.getItem("token")) {
+    window.location.href = "/login";
+}
+
+// exemplo de chamada à API protegida
+
+</script>
 </body>
 
 </html>

@@ -37,6 +37,7 @@ public class AuthRestController {
         return new  ResponseEntity<>(user,HttpStatus.OK);
     }
     
+    @CrossOrigin("*")
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO dto){
     

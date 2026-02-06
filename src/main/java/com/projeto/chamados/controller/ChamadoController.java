@@ -5,6 +5,7 @@
 package com.projeto.chamados.controller;
 import com.projeto.chamados.data.UsuarioEntity;
 import com.projeto.chamados.dto.CadastroUsuarioDTO;
+import com.projeto.chamados.dto.LoginDTO;
 import com.projeto.chamados.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,12 @@ public class ChamadoController {
         return "index";
     }
     
+    @GetMapping("/chamado")
+    public String viewChamadoPage(){
+    
+        return "chamado";
+    }
+    
     @GetMapping("/registro")
     public String viewRegistro(){
     
@@ -41,6 +48,13 @@ public class ChamadoController {
     public String salvandoUsuario(@RequestBody CadastroUsuarioDTO dto ){
     
         authservice.registrarUsuario(dto);
+        return "index";
+    }
+    
+    @PostMapping("/logando")
+    public String logando(@RequestBody LoginDTO dto ){
+    
+        authservice.login(dto);
         return "index";
     }
 }
