@@ -16,4 +16,5 @@ public interface ChamadoRepository extends JpaRepository<ChamadoEntity,Long> {
     ChamadoEntity findByEmail(String email);
     ChamadoEntity findByCategoria(String categoria);
     ChamadoEntity findByStatus(String Status);
+    ChamadoEntity findByPrioridade(String Prioridade);
 }

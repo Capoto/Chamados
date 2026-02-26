@@ -7,7 +7,6 @@ import com.projeto.chamados.dto.CadastroChamadoDTO;
 import com.projeto.chamados.dto.ChamadoResponseDTO;
 import com.projeto.chamados.data.ChamadoEntity;
 import com.projeto.chamados.data.UsuarioEntity;
-import com.projeto.chamados.dto.UsuarioDTO;
 import com.projeto.chamados.repository.ChamadoRepository;
 import com.projeto.chamados.repository.UsuarioRepository;
 import java.util.List;
@@ -156,19 +155,114 @@ public class ChamadoService {
         }
     }
     
-    public ChamadoEntity pesquisarChamadoEmail(String email){
+    public ChamadoResponseDTO pesquisarChamadoEmail(String email){
     
-        return chamadoRepository.findByEmail(email);
+        var chamado = chamadoRepository.findByEmail(email);
+                
+       if(chamado==null){
+        
+            return null;
+        }
+        
+        else{
+        
+            return new ChamadoResponseDTO(
+        chamado.getId(),
+       chamado.getTitulo(),
+        chamado.getDescricao(),
+        chamado.getAtivo(),
+        chamado.getCategoria(),
+        chamado.getPrioridade(),
+        chamado.getStatus(),
+        chamado.getEmail(),
+        chamado.getNomeouempresa(),
+        chamado.getDatachamado(),
+       chamado.getId()
+    );
+    }}
+    
+    public ChamadoResponseDTO pesquisarChamadoCategoria(String categoria){
+    
+        var chamado = chamadoRepository.findByCategoria(categoria);
+        
+        
+        if(chamado==null){
+        
+            return null;
+        }
+        
+        else{
+        
+            return new ChamadoResponseDTO(
+        chamado.getId(),
+       chamado.getTitulo(),
+        chamado.getDescricao(),
+        chamado.getAtivo(),
+        chamado.getCategoria(),
+        chamado.getPrioridade(),
+        chamado.getStatus(),
+        chamado.getEmail(),
+        chamado.getNomeouempresa(),
+        chamado.getDatachamado(),
+       chamado.getId()
+    );
     }
     
-    public ChamadoEntity pesquisarChamadoCategoria(String categoria){
-    
-        return chamadoRepository.findByCategoria(categoria);
     }
     
-    public ChamadoEntity pesquisarChamadoStatus(String status){
+    public ChamadoResponseDTO pesquisarChamadoStatus(String status){
     
-        return chamadoRepository.findByStatus(status);
+        var chamado = chamadoRepository.findByStatus(status);
+        
+        if(chamado==null){
+        
+            return null;
+        }
+        
+        else{
+        
+            return new ChamadoResponseDTO(
+        chamado.getId(),
+       chamado.getTitulo(),
+        chamado.getDescricao(),
+        chamado.getAtivo(),
+        chamado.getCategoria(),
+        chamado.getPrioridade(),
+        chamado.getStatus(),
+        chamado.getEmail(),
+        chamado.getNomeouempresa(),
+        chamado.getDatachamado(),
+       chamado.getId()
+    );
+    }
+    }
+    
+    
+    public ChamadoResponseDTO pesquisarChamadoPrioridade(String prioridade){
+    
+        var chamado = chamadoRepository.findByStatus(prioridade);
+        
+        if(chamado==null){
+        
+            return null;
+        }
+        
+        else{
+        
+            return new ChamadoResponseDTO(
+        chamado.getId(),
+       chamado.getTitulo(),
+        chamado.getDescricao(),
+        chamado.getAtivo(),
+        chamado.getCategoria(),
+        chamado.getPrioridade(),
+        chamado.getStatus(),
+        chamado.getEmail(),
+        chamado.getNomeouempresa(),
+        chamado.getDatachamado(),
+       chamado.getId()
+    );
+    }
     }
 
     public void deletaChamado(Long id){
