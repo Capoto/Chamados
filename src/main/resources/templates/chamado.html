@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Start Page</title>
+    <title>Chamado</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,10 +27,10 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ListaChamado.jsp">Chamados</a>
+                        <a class="nav-link" href="tabela">Chamados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Novo Chamado</a>
+                        <a class="nav-link" href="chamado">Novo Chamado</a>
                     </li>
 
                 </ul>
@@ -41,60 +41,74 @@
     <div class="form container mt-5">
         <form action="ChamadoServlet" method="post" class="row g-3">
 
-            <center><Strong>
-                    <h1>Criar Chamado<h1><Strong></center>
-            <div class="col-12 mt-3"></div>
-            <div class="col-12 mt-3"></div>
+            <center><Strong><h1>Criar Chamado</h1></Strong></center>
+             <div class="w-100"></div> <!-- quebra de linha -->
+             
+             <div class="w-100"></div> <!-- quebra de linha -->
+            <div class="row">
+             <div class="col-md-10 offset-md-1">
             <div class="alert alert-primary tamanho" role="alert">
                 <p>Você receberá uma cópia deste chamado por email, incluindo o número do chamado e todas as
                     atualizações de status.</p>
             </div>
-
-            <div class="row align-items-end">
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Nome Completo / Empresa *</label>
-                        <input  class="form-control divido" id="exampleFormControlInput1"
-                            placeholder="Nome do cliente ou empresa" name="nome" required>
-                    </div>
+             </div>
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Email para Contato *</label>
-                        <input type="email" class="form-control divido" id="exampleFormControlInput1"
-                            placeholder="name@example.com" name="email" required>
-
-                    </div>
-                </div>
-                <div class="col">
-
+              <div class="w-100"></div> <!-- quebra de linha -->
+           <div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Nome Completo / Empresa *</label>
+                    <input class="form-control" placeholder="Nome do cliente ou empresa" name="nome" required>
                 </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label texto">Categoria *</label>
-                <select class="form-select completo" name="categoria" aria-label="Default select example" required>
-                    <option selected>Selecione a Categoria do Problema</option>
-                    <option value="Hardware">Hardware</option>
-                    <option value="Software">Software</option>
-                    <option value="Rede">Rede</option>
-                    <option value="Licitação">Licitação</option>
-                    <option value="Financeiros">Financeiros</option>
-                    <option value="Outros">Outros</option>
-                </select>
+
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Email para Contato *</label>
+                    <input type="email" class="form-control" placeholder="name@example.com" name="email" required>
+                </div>
             </div>
 
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="mb-3">
+            <label class="form-label texto">Categoria *</label>
+            <select class="form-select" name="categoria" required>
+                <option selected>Selecione a Categoria do Problema</option>
+                <option value="Hardware">Hardware</option>
+                <option value="Software">Software</option>
+                <option value="Rede">Rede</option>
+                <option value="Licitação">Licitação</option>
+                <option value="Financeiros">Financeiros</option>
+                <option value="Outros">Outros</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+             <div class="row">
+             <div class="col-md-10 offset-md-1">
             <div class="mb-3">
                 <label class="form-label texto">Título do Chamado *</label>
-                <input name="titulo" class="form-control completo" id="exampleFormControlInput1"
+                <input name="titulo" class="form-control" id="exampleFormControlInput1"
                     placeholder="Ex: problema no servidor de Backup" required>
             </div>
+             </div>
+              </div>
 
 
 
-
-
+            
+             
             <div class="row align-items-end">
-                <div class="col">
+                <div class="col-md-4 offset-md-1">
                     <div class="mb-3">
                         <label class="form-label">Prioridade / Criticidade *</label>
 
@@ -127,13 +141,14 @@
     </div>
 
     <input type="hidden" class="selectValue" name="prioridade">
+     
 </div>
 
 
 
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-md-4 offset-md-2">
                     <div class="mb-3">
                         <label class="form-label">Tipo de Ativo de TI *</label>
                         <div class="bs-select-wrapper" name="ativo" id="select1" required>
@@ -184,18 +199,26 @@
                     <option value="3">Three</option>
                 </select>
             </div-->
-
+            
+              <div class="row">
+            <div class="col-md-10 offset-md-1">
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Descrição Detalhada *</label>
-                <textarea class="form-control completo" name="descricao" id="exampleFormControlTextarea1" rows="5"></textarea>
+                <textarea class="form-control" name="descricao" id="exampleFormControlTextarea1" rows="5"></textarea>
             </div>
+            </div>
+              </div>
+              <div class="row">
+             <div class="col-md-10 offset-md-1">
             <div class="mb-3">
                 <label for="formFile" class="form-label">Anexos (opcional)</label>
-                <input class="form-control completo" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile">
             </div>
+             </div>
+             </div>
             <br>
-            <div class="text-left">
-                <button type="submit" class="btn btn-dark buttonregistro" style="margin-left: 1.5cm;">Criar chamado</button>
+            <div class="offset-md-1" >
+                <button type="submit" class="btn btn-dark buttonregistro">Criar chamado</button>
             </div>
         </form>
     </div>

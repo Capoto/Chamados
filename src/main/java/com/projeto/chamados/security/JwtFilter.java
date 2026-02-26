@@ -20,17 +20,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
+import com.projeto.chamados.repository.UsuarioRepository;
+import com.projeto.chamados.data.UsuarioEntity;
 import java.io.IOException;
 import java.util.Collections;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
+    private final UsuarioRepository usuarioRepository;
 
-    public JwtFilter(JwtService jwtService) {
+    public JwtFilter(JwtService jwtService, UsuarioRepository usuarioRepository) {
         this.jwtService = jwtService;
+        this.usuarioRepository = usuarioRepository;
     }
 
     @Override
@@ -41,38 +46,51 @@ public class JwtFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
-        // Não tem token → segue a requisição sem autenticar
+        // 1 - Sem token → segue e ENCERRA
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             chain.doFilter(request, response);
             return;
         }
 
-        // Extrai o token
         String token = authHeader.substring(7);
 
-        // Valida
+        // 2 - Token inválido → segue e ENCERRA
         String email = jwtService.validateToken(token);
-
-        // Token inválido → segue sem autenticar
         if (email == null) {
             chain.doFilter(request, response);
             return;
         }
 
-        // Se já está autenticado, não precisa refazer
-        if (SecurityContextHolder.getContext().getAuthentication() == null) {
-
-            UsernamePasswordAuthenticationToken auth =
-                new UsernamePasswordAuthenticationToken(
-                        email,
-                        null,
-                        Collections.emptyList() // sem roles explícitas
-                );
-
-            auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            SecurityContextHolder.getContext().setAuthentication(auth);
+        // 3 - Se já está autenticado → segue e ENCERRA
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            chain.doFilter(request, response);
+            return;
         }
 
+        // 4 - Busca usuário
+        UsuarioEntity user = usuarioRepository.findByEmail(email);
+        if (user == null) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        // 5 - Cria authorities
+        var authorities = Collections.singletonList(
+                new SimpleGrantedAuthority("ROLE_" + user.getRole().name())
+        );
+
+        // 6 - Autentica usuário
+        UsernamePasswordAuthenticationToken auth =
+    new UsernamePasswordAuthenticationToken(
+            email,   // principal = email
+            token,   // credentials = o token
+            authorities
+    );
+
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
+        // 7 - SEGUE EXECUÇÃO
         chain.doFilter(request, response);
     }
 }

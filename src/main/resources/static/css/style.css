@@ -1,7 +1,7 @@
 .form {
 
-    width: 840px;
-    height: 920px;
+    width: 800px;
+    height: 940px;
     background-color: rgba(255, 255, 255, 0.7);
 
 }
@@ -75,7 +75,7 @@ label {
 
 select {
 
-    margin-left: 60px;
+    
     width: 300px;
 }
 
@@ -85,8 +85,8 @@ body {
 
 .alert {
 
-    width: 700px;
-    margin-left: 60px;
+    
+    
 }
 
 .tamanho {
@@ -97,7 +97,7 @@ body {
 
 
 .bs-select-wrapper {
-    margin-left: 60px;
+   
     position: relative;
     width: 100%;
 }

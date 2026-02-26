@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registro</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary colornav">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ListaChamado.jsp">Chamados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Novo Chamado</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+  
+
+
+<div class="container mt-5">
+    <center><h1 class="text-primary">Chamados</h1></center>
+    <br>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title text-primary">Quantidade de chamados</h2>
+        <h2 class="card-text text-primary">0</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title text-primary">Críticos</h2>
+        <h2 class="card-text text-primary">0</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title text-primary">Altas</h2>
+        <h2 class="card-text text-primary">0</h2>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      
+      <div class="card-body">
+        <h2 class="card-title text-primary">Abertos</h2>
+        <h2 class="card-text text-primary">0</h2>
+      </div>
+    </div>
+  </div>
+</div>
+    <br>
+<div class="row g-3">
+  <div class="col">
+    <input type="text" class="form-control" placeholder="Busca" aria-label="First name">
+  </div>
+  <div class="col">
+    <select class="form-select" aria-label="Default select example">
+        <option selected>Id do Chamado</option>
+        <option value="1">Título do chamado</option>
+        <option value="2">Empresa</option>
+        <option value="3">E-mail</option>
+        <option value="4"> Categoria</option>
+        <option value="5"> Prioridade</option>
+        <option value="6"> Tipo de Ativo</option>
+    </select>
+
+
+  </div>
+</div>
+
+
+    <br><br>
+    
+<table
+    class="table table-primary"
+>
+  <thead>
+    <tr>
+      <th data-field="id">
+        ID
+      </th>
+      <th
+        data-field="name"
+        data-filter-control="input"
+      >
+       Título do Chamado
+      </th>
+      <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        Empresa
+      </th>
+       <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        E-mail
+      </th>
+      <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        Categoria
+      </th>
+      <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        Prioridade
+      </th>
+      <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        Tipo de Ativo
+      </th>
+       <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        Foto
+      </th>
+      
+      <th
+        data-field="price"
+        data-filter-control="select"
+      >
+        Editar
+      </th>
+      <th
+        data-field="price"
+        data-filter-control="select"
+      >
+       Apagar
+      </th>
+    </tr>
+    
+  </thead>
+  
+  <tbody>
+
+    <tr>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>Item 1</th>
+      <th>1</th>
+      <th>1</th>
+    </tr>
+    
+  </tbody>
+</table>
+    
+    <br>
+    <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#" aria-current="page">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+    
+</div>
+
+    <br><br>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+   
+
+     <script  th:src="@{/js/criaruser.js}"></script> 
+ 
+  <script>
+// se não tiver token → vai pro login
+if (!localStorage.getItem("token")) {
+    window.location.href = "/login";
+}
+
+// exemplo de chamada à API protegida
+
+</script>
+</body>
+
+</html>
+

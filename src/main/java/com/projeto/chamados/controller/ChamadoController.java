@@ -38,6 +38,12 @@ public class ChamadoController {
         return "chamado";
     }
     
+    @GetMapping("/tabela")
+    public String viewTabelaPage(){
+    
+        return "tabela";
+    }
+    
     @GetMapping("/registro")
     public String viewRegistro(){
     

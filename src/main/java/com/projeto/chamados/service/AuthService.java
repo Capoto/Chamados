@@ -12,6 +12,9 @@ import com.projeto.chamados.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
+
 
 /**
  *
@@ -70,6 +73,25 @@ public class AuthService {
         }
         
     
+    }
+    
+    
+    public UsuarioEntity getUsuarioLogado() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+    if (auth == null || !auth.isAuthenticated()) {
+        return null;
+    }
+
+    // Agora o token existe!
+    String token = (String) auth.getCredentials();  
+    if (token == null) return null;
+
+    Long userId = jwtService.getUserIdFromToken(token);
+    if (userId == null) return null;
+
+    return usuarioRepository.findById(userId).orElse(null);
     }
     
     

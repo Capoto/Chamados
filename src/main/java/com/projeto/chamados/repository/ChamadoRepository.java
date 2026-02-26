@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
  * @author heitor
  */
 @Repository
-public interface ChamadoRepository extends JpaRepository<ChamadoEntity,JpaRepository> {
+public interface ChamadoRepository extends JpaRepository<ChamadoEntity,Long> {
     
+    ChamadoEntity findByEmail(String email);
+    ChamadoEntity findByCategoria(String categoria);
+    ChamadoEntity findByStatus(String Status);
 }

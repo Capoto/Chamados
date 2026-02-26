@@ -43,6 +43,7 @@ public class ChamadoEntity {
     @Enumerated(EnumType.STRING)
     private Ativo ativo;
     
+    @Enumerated(EnumType.STRING)
     private Status status;
     
     @Lob
