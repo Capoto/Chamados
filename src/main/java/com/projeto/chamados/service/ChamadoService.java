@@ -13,6 +13,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
+import java.time.Clock;
 
 
 /**
@@ -28,6 +29,17 @@ public class ChamadoService {
     
     @Autowired
     private UsuarioRepository usuarioRepository;
+    
+    
+    private final Clock clock;
+
+    public ChamadoService(UsuarioRepository usuarioRepository,
+                          ChamadoRepository chamadoRepository,
+                          Clock clock) {
+        this.usuarioRepository = usuarioRepository;
+        this.chamadoRepository = chamadoRepository;
+        this.clock = clock;
+    }
     
     
     private ChamadoResponseDTO toDTO(ChamadoEntity c) {
@@ -62,9 +74,7 @@ public class ChamadoService {
         chamado.setEmail(dto.email());
         chamado.setTitulo(dto.titulo());
         chamado.setStatus(dto.status());
-        LocalDateTime date = LocalDateTime.now();
-        
-        chamado.setDatachamado(date);
+        chamado.setDatachamado(LocalDateTime.now(clock));
         chamado.setUser(user);
         
        chamadoRepository.save(chamado);
@@ -80,7 +90,7 @@ public class ChamadoService {
         chamado.getEmail(),
         chamado.getNomeouempresa(),
         chamado.getDatachamado(),
-       chamado.getId()
+       chamado.getUser().getLoginid()
     );
     }
     
@@ -88,7 +98,8 @@ public class ChamadoService {
     public ChamadoResponseDTO atualizaCadastro(Long id,CadastroChamadoDTO dto){
     
     ChamadoEntity chamado = pesquisarChamadoId(id);
-        
+     
+    
     chamado.setCategoria(dto.categoria());
     chamado.setDescricao(dto.descricao());
     chamado.setNomeouempresa(dto.nomeouempresa());
@@ -96,7 +107,7 @@ public class ChamadoService {
     chamado.setEmail(dto.email());
     chamado.setTitulo(dto.titulo());
     chamado.setStatus(dto.status());
-        
+    chamado.setDatachamado(LocalDateTime.now(clock));
     chamadoRepository.save(chamado);
     
     return new ChamadoResponseDTO(
@@ -110,7 +121,7 @@ public class ChamadoService {
         chamado.getEmail(),
         chamado.getNomeouempresa(),
         chamado.getDatachamado(),
-       chamado.getId()
+        chamado.getUser().getLoginid()
     );
     }
     

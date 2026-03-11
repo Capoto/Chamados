@@ -39,7 +39,7 @@
     </nav>
     <br><br>
     <div class="form container mt-5">
-        <form action="ChamadoServlet" method="post" class="row g-3">
+        <form id="registrochamado" method="post" class="row g-3">
 
             <center><Strong><h1>Criar Chamado</h1></Strong></center>
              <div class="w-100"></div> <!-- quebra de linha -->
@@ -271,6 +271,8 @@ if (!localStorage.getItem("token")) {
 // exemplo de chamada à API protegida
 
 </script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
+     <script  th:src="@{/js/usuario.js}"></script> 
 </body>
 
 </html>
