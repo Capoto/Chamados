@@ -30,10 +30,10 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ListaChamado.jsp">Chamados</a>
+                        <a class="nav-link" href="tabela">Chamados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Novo Chamado</a>
+                        <a class="nav-link" href="chamado">Novo Chamado</a>
                     </li>
 
                 </ul>
@@ -41,194 +41,115 @@
         </div>
     </nav>
   
+<div class="container mt-5 tabelaform">
 
-
-<div class="container mt-5">
     <center><h1 class="text-primary">Chamados</h1></center>
     <br>
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-  <div class="col">
-    <div class="card">
-      
-      <div class="card-body">
-        <h2 class="card-title text-primary">Quantidade de chamados</h2>
-        <h2 class="card-text text-primary">0</h2>
-      </div>
+
+    <!-- CARDS (container removido) -->
+    <div class="row g-3">
+
+        <div class="col-3">
+            <div class="card p-3 shadow-sm chamados">
+                <h6>📊 Quantidade de chamados</h6>
+                <h3>0</h3>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card p-3 shadow-sm critico">
+                <h6>🚨 Críticos</h6>
+                <h3>0</h3>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card p-3 shadow-sm altas">
+                <h6>⬆️ Altas</h6>
+                <h3>0</h3>
+            </div>
+        </div>
+
+        <div class="col-3">
+            <div class="card p-3 shadow-sm aberto">
+                <h6>📂 Abertos</h6>
+                <h3>0</h3>
+            </div>
+        </div>
+
     </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      
-      <div class="card-body">
-        <h2 class="card-title text-primary">Críticos</h2>
-        <h2 class="card-text text-primary">0</h2>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      
-      <div class="card-body">
-        <h2 class="card-title text-primary">Altas</h2>
-        <h2 class="card-text text-primary">0</h2>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      
-      <div class="card-body">
-        <h2 class="card-title text-primary">Abertos</h2>
-        <h2 class="card-text text-primary">0</h2>
-      </div>
-    </div>
-  </div>
-</div>
+
     <br>
-<div class="row g-3">
-  <div class="col">
-    <input type="text" class="form-control" placeholder="Busca" aria-label="First name">
-  </div>
-  <div class="col">
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Id do Chamado</option>
-        <option value="1">Título do chamado</option>
-        <option value="2">Empresa</option>
-        <option value="3">E-mail</option>
-        <option value="4"> Categoria</option>
-        <option value="5"> Prioridade</option>
-        <option value="6"> Tipo de Ativo</option>
-    </select>
 
+    <!-- FILTROS (já alinhado) -->
+    <div class="row g-3">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Busca">
+      </div>
 
-  </div>
-</div>
-
+      <div class="col">
+        <select class="form-select">
+            <option selected>Id do Chamado</option>
+            <option value="1">Título do chamado</option>
+            <option value="2">Empresa</option>
+            <option value="3">E-mail</option>
+            <option value="4">Categoria</option>
+            <option value="5">Prioridade</option>
+            <option value="6">Tipo de Ativo</option>
+        </select>
+      </div>
+    </div>
 
     <br><br>
-    
-<table
-    class="table table-primary"
->
-  <thead>
-    <tr>
-      <th data-field="id">
-        ID
-      </th>
-      <th
-        data-field="name"
-        data-filter-control="input"
-      >
-       Título do Chamado
-      </th>
-      <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        Empresa
-      </th>
-       <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        E-mail
-      </th>
-      <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        Categoria
-      </th>
-      <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        Prioridade
-      </th>
-      <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        Tipo de Ativo
-      </th>
-       <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        Foto
-      </th>
-      
-      <th
-        data-field="price"
-        data-filter-control="select"
-      >
-        Editar
-      </th>
-      <th
-        data-field="price"
-        data-filter-control="select"
-      >
-       Apagar
-      </th>
-    </tr>
-    
-  </thead>
-  
-  <tbody>
 
-    <tr>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-      <th>Item 1</th>
-      <th>1</th>
-      <th>1</th>
-    </tr>
-    
-  </tbody>
-</table>
-    
+    <!-- TABELA (já alinhada) -->
+    <table class="table" id="tabelaChamados">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título do Chamado</th>
+                <th>Empresa</th>
+                <th>E-mail</th>
+                <th>Categoria</th>
+                <th>Prioridade</th>
+                <th>Tipo de Ativo</th>
+                <th>Foto</th>
+                <th>Editar</th>
+                <th>Apagar</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Item 1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Item 1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>Item 1</td>
+                <td><button class="btn bg-transparent border-0">✏️ Editar</button></td>
+                <td><button class="btn bg-transparent border-0">🗑️ Apagar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
     <br>
+
+    <!-- PAGINAÇÃO -->
     <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item"><a href="#" class="page-link">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active">
-      <a class="page-link" href="#" aria-current="page">2</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-    
+        <ul class="pagination">
+            <li class="page-item"><a href="#" class="page-link">Anterior</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active">
+                <a class="page-link" href="#" aria-current="page">2</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
+        </ul>
+    </nav>
+
 </div>
 
     <br><br>
@@ -236,17 +157,9 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
    
 
-     <script  th:src="@{/js/criaruser.js}"></script> 
- 
-  <script>
-// se não tiver token → vai pro login
-if (!localStorage.getItem("token")) {
-    window.location.href = "/login";
-}
-
-// exemplo de chamada à API protegida
-
-</script>
+     <script  th:src="@{/js/logado.js}"></script> 
+     <script  th:src="@{/js/tabela.js}"></script> 
+     
 </body>
 
 </html>

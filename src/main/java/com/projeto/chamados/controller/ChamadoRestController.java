@@ -19,6 +19,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
 /**
  *
  * @author heitor
@@ -31,6 +32,7 @@ public class ChamadoRestController {
     @Autowired
     ChamadoService chamadoservice;
     
+    @CrossOrigin("*")
     @PostMapping("/criar")
     public ResponseEntity<ChamadoResponseDTO> criarChamado(@RequestBody CadastroChamadoDTO dto){
     
@@ -38,6 +40,7 @@ public class ChamadoRestController {
         return new ResponseEntity<>(novochamado,HttpStatus.CREATED);
     }
     
+    @CrossOrigin("*")
     @PutMapping("/editar/{id}")
     public ResponseEntity<ChamadoResponseDTO> editarChamado(@PathVariable Long id,@RequestBody CadastroChamadoDTO dto){
     
@@ -45,6 +48,7 @@ public class ChamadoRestController {
         return new ResponseEntity<>(novochamado,HttpStatus.OK);
     }
     
+    @CrossOrigin("*")
     @GetMapping("/listar")
     public ResponseEntity<List<ChamadoResponseDTO>> listarChamado(){
     
@@ -52,6 +56,7 @@ public class ChamadoRestController {
         return new ResponseEntity<>(lista,HttpStatus.OK);
     }
     
+    @CrossOrigin("*")
     @GetMapping("/pesquisar/{id}")
     public ResponseEntity<ChamadoResponseDTO> pesquisaChamadoId(@PathVariable Long id){
     
@@ -59,7 +64,7 @@ public class ChamadoRestController {
         return new ResponseEntity<>(lista,HttpStatus.OK);
     }
     
-    
+    @CrossOrigin("*")
     @DeleteMapping("/apagar/{id}")
     public ResponseEntity apagarChamadoId(@PathVariable Long id){
     

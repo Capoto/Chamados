@@ -28,6 +28,29 @@ public class GlobalExceptionHandler {
     
     }
     
+    
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    public ResponseEntity<Map<String, String>> handleUsuarioNaoEncontrado(UsuarioNaoEncontradoException ex) {
+    
+        Map<String, String> erro = new HashMap<>();
+        erro.put("erro", ex.getMessage());
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    
+    
+    }
+    
+    @ExceptionHandler(SenhaErradaException.class)
+    public ResponseEntity<Map<String, String>> handleSenhaErrada(SenhaErradaException ex) {
+    
+        Map<String, String> erro = new HashMap<>();
+        erro.put("erro", ex.getMessage());
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+    
+    
+    }
+    
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String,String>>  exception(Exception ex){
     

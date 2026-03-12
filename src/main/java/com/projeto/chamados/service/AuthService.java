@@ -8,6 +8,8 @@ import com.projeto.chamados.dto.LoginDTO;
 import com.projeto.chamados.dto.CadastroUsuarioDTO;
 import com.projeto.chamados.repository.UsuarioRepository;
 import com.projeto.chamados.exception.EmailJaExisteException;
+import com.projeto.chamados.exception.SenhaErradaException;
+import com.projeto.chamados.exception.UsuarioNaoEncontradoException;
 import com.projeto.chamados.security.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -59,14 +61,14 @@ public class AuthService {
         
         if(!usuarioRepository.existsByEmail(dto.email())){
         
-            throw new RuntimeException("Usuário não encontrado!");
+            throw new UsuarioNaoEncontradoException("Usuário não encontrado!");
         }
         else{
         
             UsuarioEntity user = usuarioRepository.findByEmail(dto.email());
             
             if(!passwordEncoder.matches(dto.senha(), user.getSenhahash())){
-                throw new RuntimeException("A senha está errada");
+                throw new SenhaErradaException("A senha está errada");
             }
         
             return jwtService.gerarToken(user);

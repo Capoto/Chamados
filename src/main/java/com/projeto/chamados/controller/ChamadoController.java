@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute; 
 import org.springframework.web.bind.annotation.PathVariable; 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
 /**
  *
  * @author heitor
@@ -62,5 +64,11 @@ public class ChamadoController {
     
         authservice.login(dto);
         return "index";
+    }
+    
+    @GetMapping("/editachamado")
+    public String AnaliseFilme(Model model,@RequestParam int id) {
+        
+        return "editachamado";
     }
 }

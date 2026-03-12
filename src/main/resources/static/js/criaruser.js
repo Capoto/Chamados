@@ -9,7 +9,82 @@ $("#registrouser").submit(function(event){
     var empresa = $("#empresa").val();
     var endereco = $("#endereco").val();
     var senha = $("#senha").val();
-    var confima = $("confirma").val();
+    var confirma = $("#confirma").val();
+    
+    var flag =0;
+    if(!nome){
+        
+        document.getElementById("nome").className = "form-control is-invalid";
+        flag=1;
+    }else{
+        
+        
+        document.getElementById("nome").className = "form-control is-valid";
+    }
+    
+    if(!email || !email.includes('@')){
+        
+        document.getElementById("email").className = "form-control is-invalid";
+        flag=1;
+    }else{
+        
+        
+        document.getElementById("email").className = "form-control is-valid";
+    }
+    
+    
+    if(!empresa){
+        
+        document.getElementById("empresa").className = "form-control is-invalid";
+        flag=1;
+    }else{
+        
+        
+        document.getElementById("empresa").className = "form-control is-valid";
+    }
+    
+    if(!endereco){
+        
+        document.getElementById("endereco").className = "form-control is-invalid";
+        flag=1;
+    }else{
+        
+        
+        document.getElementById("endereco").className = "form-control is-valid";
+    }
+    
+    
+    if(!senha){
+        
+        document.getElementById("senha").className = "form-control is-invalid";
+        flag=1;
+    }else{
+        
+        
+        document.getElementById("senha").className = "form-control is-valid";
+    }
+    
+    console.log(senha);
+    if(!confirma || confirma!==senha){
+        
+        document.getElementById("confirma").className = "form-control is-invalid";
+        flag=1;
+    }else{
+        
+        
+        document.getElementById("confirma").className = "form-control is-valid";
+    }
+    console.log(confirma);
+    var myElements = document.querySelectorAll(".registro");
+    console.log(myElements.length);
+    for (var i= 0; i < myElements.length ; i++) { 
+        myElements[i].style.height = "920px";
+    }
+    
+    if(flag===1){
+        
+        return;
+    }
     
     
     $.ajax({

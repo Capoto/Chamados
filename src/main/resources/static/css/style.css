@@ -1,15 +1,81 @@
 .form {
 
     width: 800px;
-    height: 940px;
+    height: 965px;
     background-color: rgba(255, 255, 255, 0.7);
 
+}
+
+h6{
+    
+    color: white;
+}
+
+.critico{
+    background-color: rgba(255, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chamados{
+    background-color: rgba(74, 144, 216, 0.8);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chamados{
+    background-color: rgba(74, 144, 216, 0.8);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.altas{
+    background-color: rgba(38,166,154, 0.8);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.aberto{
+    background-color: rgba(255,241,118, 0.9);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tabelaform{
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
 }
 
 .registro{
     
     width: 600px;
-    height: 780px;
+    height: 820px;
     background-color: rgba(255, 255, 255, 0.7);
     
 }
@@ -17,7 +83,7 @@
 .login{
     
     width: 600px;
-    height: 370px;
+    height: 460px;
     background-color: rgba(255, 255, 255, 0.7);
     
 }
@@ -166,4 +232,12 @@ body {
     color: #6c757d;
     font-size: 0.85rem;
     line-height: 1.1rem;
+}
+
+
+
+
+ .table > thead > tr > th {
+   background: #4a90e2;
+    color: #ffffff;
 }

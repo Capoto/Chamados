@@ -2,18 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.projeto.chamados.enums;
+package com.projeto.chamados.exception;
 
 /**
  *
  * @author heitor
  */
-public enum Categoria {
-    Hardware,
-    Software,
-    Switch,
-    Rede,
-    Licitacao,
-    Financeiros,
-    Outros
+public class UsuarioNaoEncontradoException extends RuntimeException {
+    
+    public UsuarioNaoEncontradoException(String message){
+    
+        super(message);
+    }
 }
