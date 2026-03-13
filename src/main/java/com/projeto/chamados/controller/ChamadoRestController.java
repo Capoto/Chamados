@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /**
  *
  * @author heitor
@@ -49,11 +52,16 @@ public class ChamadoRestController {
     }
     
     @CrossOrigin("*")
+   
     @GetMapping("/listar")
-    public ResponseEntity<List<ChamadoResponseDTO>> listarChamado(){
-    
-        var lista = chamadoservice.listaChamados();
-        return new ResponseEntity<>(lista,HttpStatus.OK);
+    public ResponseEntity<Page<ChamadoResponseDTO>> listarChamados(
+        @RequestParam(required = false) String busca,
+        @RequestParam(defaultValue = "1") int filtro,
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "10") int size) {
+
+        Page<ChamadoResponseDTO> lista = chamadoservice.listarChamados(busca, filtro, page, size);
+        return ResponseEntity.ok(lista);
     }
     
     @CrossOrigin("*")

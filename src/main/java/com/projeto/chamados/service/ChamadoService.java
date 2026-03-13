@@ -9,11 +9,13 @@ import com.projeto.chamados.data.ChamadoEntity;
 import com.projeto.chamados.data.UsuarioEntity;
 import com.projeto.chamados.repository.ChamadoRepository;
 import com.projeto.chamados.repository.UsuarioRepository;
-import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.time.LocalDateTime;
 import java.time.Clock;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 
 
 /**
@@ -125,12 +127,25 @@ public class ChamadoService {
     );
     }
     
-    public List<ChamadoResponseDTO> listaChamados(){
-    
-        return chamadoRepository.findAll().stream()
-        .map(this::toDTO)
-        .toList();
-    }
+    public Page<ChamadoResponseDTO> listarChamados(String busca, int filtro, int page, int size) {
+
+    Pageable pageable = PageRequest.of(page, size);
+
+    String campo = switch (filtro) {
+        case 1 -> "id";
+        case 2 -> "titulo";
+        case 3 -> "nomeouempresa";
+        case 4 -> "email";
+        case 5 -> "categoria";
+        case 6 -> "prioridade";
+        case 7 -> "ativo";
+        default -> "titulo";
+    };
+
+    Page<ChamadoEntity> pagina = chamadoRepository.buscarPorCampo(campo, busca, pageable);
+
+    return pagina.map(this::toDTO);
+}
     
     
     public ChamadoEntity pesquisarChamadoId(Long id){

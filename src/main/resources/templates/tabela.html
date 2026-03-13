@@ -81,24 +81,24 @@
 
     <br>
 
-    <!-- FILTROS (já alinhado) -->
-    <div class="row g-3">
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Busca">
-      </div>
-
-      <div class="col">
-        <select class="form-select">
-            <option selected>Id do Chamado</option>
-            <option value="1">Título do chamado</option>
-            <option value="2">Empresa</option>
-            <option value="3">E-mail</option>
-            <option value="4">Categoria</option>
-            <option value="5">Prioridade</option>
-            <option value="6">Tipo de Ativo</option>
-        </select>
-      </div>
+   <!-- FILTROS -->
+<div class="row g-3">
+    <div class="col">
+        <input type="text" class="form-control" placeholder="Busca" id="inputBusca">
     </div>
+
+    <div class="col">
+        <select class="form-select" id="selectFiltro">
+            <option value="1">Id do Chamado</option>
+            <option value="2">Título do chamado</option>
+            <option value="3">Empresa</option>
+            <option value="4">E-mail</option>
+            <option value="5">Categoria</option>
+            <option value="6">Prioridade</option>
+            <option value="7">Tipo de Ativo</option>
+        </select>
+    </div>
+</div>
 
     <br><br>
 
@@ -138,17 +138,7 @@
     <br>
 
     <!-- PAGINAÇÃO -->
-    <nav aria-label="...">
-        <ul class="pagination">
-            <li class="page-item"><a href="#" class="page-link">Anterior</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active">
-                <a class="page-link" href="#" aria-current="page">2</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-        </ul>
-    </nav>
+    <ul class="pagination" id="paginacao"></ul>
 
 </div>
 

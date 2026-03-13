@@ -28,87 +28,96 @@ function deletarChamado(id){
        });
     }
 
-function carregarChamados(){
-        
-        $.ajax({
-            
-           
-            url: "http://localhost:8080/funcao/listar",
-            method: "GET",
-        headers: {
-        "Authorization": "Bearer " + localStorage.getItem("token")
-    }, success: function(response){
-           
-            
-        $('#tabelaChamados tbody').empty(); 
-        
-        for(let i =0; i < response.length; i++){
-            
-            let chamado = response[i];
-            
-            let id = $('<td>') 
-                .text(chamado.id); 
-            let titulo = $('<td>') 
-                .text(chamado.titulo);
-            let nome = $('<td>') 
-                .text(chamado.nomeouempresa);
-            let email = $('<td>') 
-                .text(chamado.email);
-            let categoria = $('<td>') 
-                .text(chamado.categoria);
-            let prioridade = $('<td>') 
-                .text(chamado.prioridade);
-            let ativo = $('<td>') 
-                .text(chamado.ativo);
-           
-           
-            let botaofoto = $('<button class="btn bg-transparent border-0">') 
-                .text('📷 Foto');
-            let foto = $('<td>') 
-                .append(botaofoto);
-        
-            let botaoeditar = $(`<button onclick="window.location.href='editachamado?id=${response[i].id}'" class="btn bg-transparent border-0">`) 
-                .text('✏️️ Editar'); 
-                     
-            let editar = $('<td>') 
-                .append(botaoeditar);    
-            
-            
-            let botaoDeletar = $(`<button onclick="deletarChamado(${response[i].id})" class="btn bg-transparent border-0">`) 
-                .text('🗑️ Apagar'); 
-                     
-            let excluir = $('<td>') 
-                .append(botaoDeletar); 
-        
-            let tr = $('<tr>')
-                .attr('data-id', chamado.id) 
-                .append(id) 
-                .append(titulo)
-                .append(nome)
-                .append(email)
-                .append(categoria)
-                .append(prioridade)
-                .append(ativo)
-                .append(foto)
-                .append(editar)
-                .append(excluir)
-                ;
+let paginaAtual = 0;
 
-$('#tabelaChamados tbody').append(tr);
-            
-        }
-            
-        console.log(response);
-            
-        }, 
+function carregarChamados() {
+
+    let filtro = $("#selectFiltro").val();     // ex: 1, 2, 3...
+    let busca  = $("#inputBusca").val();       // texto digitado
+
+    $.ajax({
+        url: "http://localhost:8080/funcao/listar",
+        method: "GET",
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        data: {
+            page: paginaAtual,
+            size: 10,
+            filtro: filtro,
+            busca: busca
+        },
+        success: function(response) {
+
+            // Limpando tabela
+            $('#tabelaChamados tbody').empty();
+
+            // response.content é a lista real
+            let lista = response.content;
+
+            for (let i = 0; i < lista.length; i++) {
+
+                let chamado = lista[i];
+
+                let tr = $('<tr>')
+                    .attr('data-id', chamado.id)
+                    .append($('<td>').text(chamado.id))
+                    .append($('<td>').text(chamado.titulo))
+                    .append($('<td>').text(chamado.nomeouempresa))
+                    .append($('<td>').text(chamado.email))
+                    .append($('<td>').text(chamado.categoria))
+                    .append($('<td>').text(chamado.prioridade))
+                    .append($('<td>').text(chamado.ativo))
+                    .append($('<td>').append(
+                        $('<button class="btn bg-transparent border-0">📷 Foto</button>')
+                    ))
+                    .append($('<td>').append(
+                        $(`<button onclick="window.location.href='editachamado?id=${chamado.id}'" class="btn bg-transparent border-0">✏️ Editar</button>`)
+                    ))
+                    .append($('<td>').append(
+                        $(`<button onclick="deletarChamado(${chamado.id})" class="btn bg-transparent border-0">🗑️ Apagar</button>`)
+                    ));
+
+                $('#tabelaChamados tbody').append(tr);
+            }
+
+            montarPaginacao(response.totalPages);
+        },
         error: function(xhr) {
-            const erro = JSON.parse(xhr.responseText);
-            $("#mensagem").html("<h1 style='color: red;'>"+erro.erro+"</h1>");
             console.error("Erro:", xhr.responseText);
         }
-            
-            
-        });}
+    });
+}
+
+function montarPaginacao(totalPages) {
+
+    $("#paginacao").empty();
+
+    for (let i = 0; i < totalPages; i++) {
+        let btn = $(`
+            <li class="page-item ${i === paginaAtual ? 'active' : ''}">
+                <button class="page-link">${i + 1}</button>
+            </li>
+        `);
+
+        btn.click(() => {
+            paginaAtual = i;
+            carregarChamados();
+        });
+
+        $("#paginacao").append(btn);
+    }
+}
+
+$("#inputBusca").on("keyup", function () {
+    paginaAtual = 0;
+    carregarChamados();
+});
+
+$("#selectFiltro").on("change", function () {
+    paginaAtual = 0;
+    carregarChamados();
+});
 
 $(document).ready(function(){
    

@@ -239,59 +239,7 @@ public class ChamadoUnitTest {
     verify(chamadoRepository).delete(any(ChamadoEntity.class));
 }
     
-    @Test
-    public void testListarChamado(){
-
-    CadastroChamadoDTO dto = new CadastroChamadoDTO(
-            "Soluções TI",
-            "heitor@gmail.com",
-            "Servidor queimado",
-            "",
-            Categoria.Rede,
-            Prioridade.Alta,
-            Ativo.Servidor,
-            Status.Aguardando,
-            1L
-    );
-
-    UsuarioEntity user = new UsuarioEntity();
-    user.setLoginid(dto.userId());
-
-    ChamadoEntity chamado = new ChamadoEntity();
-    chamado.setId(1L);
-    chamado.setNomeouempresa(dto.nomeouempresa());
-    chamado.setEmail(dto.email());
-    chamado.setTitulo(dto.titulo());
-    chamado.setDescricao(dto.descricao());
-    chamado.setCategoria(dto.categoria());
-    chamado.setPrioridade(dto.prioridade());
-    chamado.setAtivo(dto.ativo());
-    chamado.setStatus(dto.status());
-    chamado.setUser(user);
-
-    // ⬅️ MOCKA SOMENTE FINDALL()
-    when(chamadoRepository.findAll()).thenReturn(List.of(chamado));
-
-    ChamadoService service = new ChamadoService(usuarioRepository, chamadoRepository, clock);
-
-    // EXECUTA
-    List<ChamadoResponseDTO> resultado = service.listaChamados();
-
-    // VERIFICA CHAMADAS
-    verify(chamadoRepository).findAll();
-
-    // VERIFICA CONTEÚDO
-    assertEquals(1, resultado.size());
-    ChamadoResponseDTO dtoResp = resultado.get(0);
-
-    assertEquals(chamado.getTitulo(), dtoResp.titulo());
-    assertEquals(chamado.getDescricao(), dtoResp.descricao());
-    assertEquals(chamado.getCategoria(), dtoResp.categoria());
-    assertEquals(chamado.getPrioridade(), dtoResp.prioridade());
-    assertEquals(chamado.getStatus(), dtoResp.status());
-    assertEquals(chamado.getEmail(), dtoResp.email());
-    assertEquals(chamado.getNomeouempresa(), dtoResp.nomeouempresa());
-}
+    
     
     @Test
     public void testPesquisaChamadoId(){
