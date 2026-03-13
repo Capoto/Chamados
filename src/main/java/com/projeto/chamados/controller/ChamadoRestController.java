@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.projeto.chamados.controller;
-import com.projeto.chamados.data.ChamadoEntity;
 import com.projeto.chamados.dto.CadastroChamadoDTO;
 import com.projeto.chamados.dto.ChamadoResponseDTO;
+import com.projeto.chamados.interfaces.MetricasChamado;
 import com.projeto.chamados.service.ChamadoService;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +21,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 /**
  *
@@ -78,6 +77,14 @@ public class ChamadoRestController {
     
         chamadoservice.deletaChamado(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    @CrossOrigin("*")
+    @GetMapping("/metricas/{id}")
+    public ResponseEntity<MetricasChamado> metricasId(@PathVariable Long id){
+    
+        var lista = chamadoservice.metricas(id);
+        return new ResponseEntity<>(lista,HttpStatus.OK);
     }
     
 }

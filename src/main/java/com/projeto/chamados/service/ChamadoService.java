@@ -5,6 +5,7 @@
 package com.projeto.chamados.service;
 import com.projeto.chamados.dto.CadastroChamadoDTO;
 import com.projeto.chamados.dto.ChamadoResponseDTO;
+import com.projeto.chamados.interfaces.MetricasChamado;
 import com.projeto.chamados.data.ChamadoEntity;
 import com.projeto.chamados.data.UsuarioEntity;
 import com.projeto.chamados.repository.ChamadoRepository;
@@ -16,7 +17,6 @@ import java.time.Clock;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
-
 
 /**
  *
@@ -295,5 +295,11 @@ public class ChamadoService {
     
          ChamadoEntity chamado = pesquisarChamadoId(id);
          chamadoRepository.delete(chamado);
+    }
+    
+    
+    public MetricasChamado metricas(long id){
+    
+        return chamadoRepository.metricas(id);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import com.projeto.chamados.interfaces.MetricasChamado;
 
 /**
  *
@@ -39,4 +40,24 @@ Page<ChamadoEntity> buscarPorCampo(
         @Param("campo") String campo,
         @Param("valor") String valor,
         Pageable pageable);
+
+       @Query(value = """
+    SELECT 
+        COUNT(*) AS quantidadeChamados,
+        SUM(CASE WHEN status = 'Aberto' THEN 1 ELSE 0 END) AS aberto,
+        SUM(CASE WHEN prioridade = 'Crítica' THEN 1 ELSE 0 END) AS critico,
+        SUM(CASE WHEN prioridade = 'Alta' THEN 1 ELSE 0 END) AS alta,
+        SUM(CASE WHEN prioridade = 'Baixa' THEN 1 ELSE 0 END) AS baixa,
+        SUM(CASE WHEN prioridade = 'Média' THEN 1 ELSE 0 END) AS media,
+        SUM(CASE WHEN categoria = 'Hardware' THEN 1 ELSE 0 END) AS hardware,
+        SUM(CASE WHEN categoria = 'Software' THEN 1 ELSE 0 END) AS software,
+        SUM(CASE WHEN categoria = 'Switch' THEN 1 ELSE 0 END) AS switchCategoria,
+        SUM(CASE WHEN categoria = 'Rede' THEN 1 ELSE 0 END) AS rede,
+        SUM(CASE WHEN categoria = 'Licitacao' THEN 1 ELSE 0 END) AS licitacao,
+        SUM(CASE WHEN categoria = 'Financeiros' THEN 1 ELSE 0 END) AS financeiros,
+        SUM(CASE WHEN categoria = 'Outros' THEN 1 ELSE 0 END) AS outros
+    FROM chamados
+    WHERE user_id = :id
+""", nativeQuery = true)
+MetricasChamado metricas(long id);
 }
