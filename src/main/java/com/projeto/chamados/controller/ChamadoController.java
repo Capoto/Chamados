@@ -67,7 +67,7 @@ public class ChamadoController {
     }
     
     @GetMapping("/editachamado")
-    public String AnaliseFilme(Model model,@RequestParam int id) {
+    public String EditaChamado(Model model,@RequestParam int id) {
         
         return "editachamado";
     }
