@@ -35,6 +35,17 @@ function carregarChamados() {
     let filtro = $("#selectFiltro").val();     // ex: 1, 2, 3...
     let busca  = $("#inputBusca").val();       // texto digitado
 
+
+     $.ajax({
+        
+        url: "http://localhost:8080/auth/me",
+        method: "GET",
+        headers: {
+        "Authorization": "Bearer " + localStorage.getItem("token")
+    },
+        success: function(login){
+            
+            
     $.ajax({
         url: "http://localhost:8080/funcao/listar",
         method: "GET",
@@ -45,7 +56,8 @@ function carregarChamados() {
             page: paginaAtual,
             size: 10,
             filtro: filtro,
-            busca: busca
+            busca: busca,
+            id: login.id
         },
         success: function(response) {
 
@@ -87,6 +99,11 @@ function carregarChamados() {
             console.error("Erro:", xhr.responseText);
         }
     });
+    
+        },erro: function(xhor){
+            
+            console.error("Erro:", xhr.responseText);
+        }});
 }
 
 function montarPaginacao(totalPages) {

@@ -78,7 +78,7 @@ $("#registrouser").submit(function(event){
     var myElements = document.querySelectorAll(".registro");
     console.log(myElements.length);
     for (var i= 0; i < myElements.length ; i++) { 
-        myElements[i].style.height = "920px";
+        myElements[i].style.height = "960px";
     }
     
     if(flag===1){

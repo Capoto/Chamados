@@ -127,7 +127,7 @@ public class ChamadoService {
     );
     }
     
-    public Page<ChamadoResponseDTO> listarChamados(String busca, int filtro, int page, int size) {
+    public Page<ChamadoResponseDTO> listarChamados(String busca, int filtro, int page, int size, long id) {
 
     Pageable pageable = PageRequest.of(page, size);
 
@@ -142,7 +142,7 @@ public class ChamadoService {
         default -> "titulo";
     };
 
-    Page<ChamadoEntity> pagina = chamadoRepository.buscarPorCampo(campo, busca, pageable);
+    Page<ChamadoEntity> pagina = chamadoRepository.buscarPorCampoId(campo, busca,id, pageable);
 
     return pagina.map(this::toDTO);
 }

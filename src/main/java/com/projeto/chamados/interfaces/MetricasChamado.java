@@ -9,17 +9,17 @@ package com.projeto.chamados.interfaces;
  * @author heitor
  */
 public interface MetricasChamado {
-    Long getQuantidadeChamados();
-    Long getAberto();
-    Long getCritico();
-    Long getAlta();
-    Long getBaixa();
-    Long getMedia();
-    Long getHardware();
-    Long getSoftware();
-    Long getSwitchCategoria();
-    Long getRede();
-    Long getLicitacao();
-    Long getFinanceiros();
-    Long getOutros();
+    long getQuantidadeChamados();
+    long getAberto();
+    long getCritico();
+    long getAlta();
+    long getBaixa();
+    long getMedia();
+    long getHardware();
+    long getSoftware();
+    long getSwitchCategoria();
+    long getRede();
+    long getLicitacao();
+    long getFinanceiros();
+    long getOutros();
 }

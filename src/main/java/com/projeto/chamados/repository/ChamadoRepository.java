@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import com.projeto.chamados.interfaces.MetricasChamado;
-
+import com.projeto.chamados.interfaces.ChamadoId;
 /**
  *
  * @author heitor
@@ -40,6 +40,27 @@ Page<ChamadoEntity> buscarPorCampo(
         @Param("campo") String campo,
         @Param("valor") String valor,
         Pageable pageable);
+
+
+   @Query("""
+    SELECT c FROM ChamadoEntity c
+    WHERE 
+        ((:campo = 'id' AND CAST(c.id AS string) LIKE %:valor%)
+        OR (:campo = 'titulo' AND LOWER(c.titulo) LIKE LOWER(CONCAT('%', :valor, '%')))
+        OR (:campo = 'nomeouempresa' AND LOWER(c.nomeouempresa) LIKE LOWER(CONCAT('%', :valor, '%')))
+        OR (:campo = 'email' AND LOWER(c.email) LIKE LOWER(CONCAT('%', :valor, '%')))
+        OR (:campo = 'categoria' AND LOWER(c.categoria) LIKE LOWER(CONCAT('%', :valor, '%')))
+        OR (:campo = 'prioridade' AND LOWER(c.prioridade) LIKE LOWER(CONCAT('%', :valor, '%')))
+        OR (:campo = 'ativo' AND LOWER(c.ativo) LIKE LOWER(CONCAT('%', :valor, '%')))
+                  )
+        AND c.user.id = :id
+""")
+Page<ChamadoEntity> buscarPorCampoId(
+        @Param("campo") String campo,
+        @Param("valor") String valor,
+        @Param("id") long id,
+        Pageable pageable);
+    
 
        @Query(value = """
     SELECT 

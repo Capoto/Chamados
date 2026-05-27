@@ -57,9 +57,12 @@ public class ChamadoRestController {
         @RequestParam(required = false) String busca,
         @RequestParam(defaultValue = "1") int filtro,
         @RequestParam(defaultValue = "0") int page,
-        @RequestParam(defaultValue = "10") int size) {
+        @RequestParam(defaultValue = "10") int size,
+        @RequestParam(required = false) long id
+    )
+        {
 
-        Page<ChamadoResponseDTO> lista = chamadoservice.listarChamados(busca, filtro, page, size);
+        Page<ChamadoResponseDTO> lista = chamadoservice.listarChamados(busca, filtro, page, size,id);
         return ResponseEntity.ok(lista);
     }
     
