@@ -4,7 +4,7 @@ $(document).ready(function(){
     
     $.ajax({
         
-        url: "http://localhost:8080/auth/me",
+        url: "/auth/me",
         method: "GET",
         headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
@@ -13,7 +13,7 @@ $(document).ready(function(){
            
         $.ajax({
         
-            url: `http://localhost:8080/funcao/metricas/${response.id}`,
+            url: `/funcao/metricas/${response.id}`,
             method: "GET",
             headers: {
             "Authorization": "Bearer " + localStorage.getItem("token")

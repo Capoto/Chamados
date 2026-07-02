@@ -89,7 +89,7 @@ $("#registrouser").submit(function(event){
     
     $.ajax({
         
-        url: "http://localhost:8080/auth/registrar",
+        url: "/auth/registrar",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify({

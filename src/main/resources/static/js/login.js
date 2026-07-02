@@ -29,7 +29,7 @@ $("#login").submit(function(event){
     
     $.ajax({
        
-        url: "http://localhost:8080/auth/login",
+        url: "/auth/login",
         method: "POST",
         contentType: "application/json",
         data: JSON.stringify(

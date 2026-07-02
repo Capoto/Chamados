@@ -26,7 +26,7 @@ $("#registrochamado").submit(function(event){
     console.log("ATIVO:", ativo);
     console.log(">>> CATEGORIA REAL ENVIADA =", categoria, "| tipo:", typeof categoria);
     $.ajax({
-        url: `http://localhost:8080/funcao/editar/${idChamado}`,
+        url: `/funcao/editar/${idChamado}`,
         method: "PUT",
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("token")

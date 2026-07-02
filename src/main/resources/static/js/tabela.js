@@ -8,7 +8,7 @@ function deletarChamado(id){
         
        $.ajax({
           
-          url: `http://localhost:8080/funcao/apagar/${id}`,
+          url: `/funcao/apagar/${id}`,
           method: 'DELETE',
           headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
@@ -38,7 +38,7 @@ function carregarChamados() {
 
      $.ajax({
         
-        url: "http://localhost:8080/auth/me",
+        url: "/auth/me",
         method: "GET",
         headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
@@ -47,7 +47,7 @@ function carregarChamados() {
             
             
     $.ajax({
-        url: "http://localhost:8080/funcao/listar",
+        url: "/funcao/listar",
         method: "GET",
         headers: {
             "Authorization": "Bearer " + localStorage.getItem("token")

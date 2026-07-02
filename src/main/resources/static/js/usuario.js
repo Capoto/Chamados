@@ -4,7 +4,7 @@ $(document).ready(function () {
 console.log("teste");
     $.ajax({
         
-        url: "http://localhost:8080/auth/me",
+        url: "/auth/me",
         method: "GET",
         headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")

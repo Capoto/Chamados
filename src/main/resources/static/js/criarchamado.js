@@ -81,7 +81,7 @@ $("#registrochamado").submit(function(event){
     
     $.ajax({
         
-        url: "http://localhost:8080/auth/me",
+        url: "/auth/me",
         method: "GET",
         headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")

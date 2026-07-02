@@ -11,7 +11,7 @@ $(document).ready(function(){
     
     $.ajax({
        
-        url: `http://localhost:8080/funcao/pesquisar/${id}`,
+        url: `/funcao/pesquisar/${id}`,
         method: "GET",
         headers: {
         "Authorization": "Bearer " + localStorage.getItem("token")
